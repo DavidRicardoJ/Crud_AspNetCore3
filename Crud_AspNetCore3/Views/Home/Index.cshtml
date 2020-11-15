@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Crud_AspNetCore3.Models.Produto>
+
+@{
+    ViewData["Title"] = "Crud AspNet Core";
+}
+
+<h1>@ViewData["title"]</h1>
+
+<p>
+    <a asp-action="CreateProduto">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fabricante)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabricante)
+            </td>
+            <td>
+                <a asp-action="UpdateProduto" asp-route-id="@item.ProdutoId">Edit</a> |                
+                <a asp-action="DeleteProduto" asp-route-id="@item.ProdutoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
